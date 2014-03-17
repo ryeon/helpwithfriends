@@ -1,4 +1,6 @@
 Helpwithfriends::Application.routes.draw do
+  get "pages/home"
+  get "pages/help"
   resources :microposts
 
   resources :users
