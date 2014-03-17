@@ -7,11 +7,16 @@ describe "Pages" do
 			expect(page).to have_content('Help With Friends')
 		end
 
-		it "should have the title" "Home" do
-			visit '/pages/home'
-			expect(page).to have_title("Home - Help With Friends")
-		end
-	end
+	    it "should have the base title" do
+	      visit '/pages/home'
+	      expect(page).to have_title("Help With Friends")
+	    end
+
+	    it "should not have a custom page title" do
+	      visit '/pages/home'
+	      expect(page).not_to have_title('Home - ')
+	    end
+	  end
 
 
 	describe "Help Page" do
