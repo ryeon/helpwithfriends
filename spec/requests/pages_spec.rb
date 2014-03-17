@@ -1,45 +1,30 @@
 require 'spec_helper'
 
 describe "Pages" do
+	subject {page}
 	describe "Home" do
-		it "should have the content" 'Help With Friends' do
-			visit '/pages/home'
-			expect(page).to have_content('Help With Friends')
-		end
-
-	    it "should have the base title" do
-	      visit '/pages/home'
-	      expect(page).to have_title("Help With Friends")
-	    end
-
-	    it "should not have a custom page title" do
-	      visit '/pages/home'
-	      expect(page).not_to have_title('Home - ')
-	    end
+		before { visit root_path }
+		it {should have_content('Help With Friends')}
+	    it {should have_title("Help With Friends")}
+	    it {should_not have_title('Home - ')} 
 	  end
 
 
 	describe "Help Page" do
-		it "should have the content" 'Help' do
-			visit '/pages/help'
-			expect(page).to have_content('Help')
-		end
-
-		it "should have the title" "Help" do
-			visit '/pages/help'
-			expect(page).to have_title("Help - Help With Friends")
-		end
+		before {visit help_path}
+		it {should have_content('Help')}
+		it {should have_title('Help - Help With Friends')}
 	 end
 
 	describe "About Page" do
-		it "should have the content" 'About' do
-			visit '/pages/about'
-			expect(page).to have_content('About')
-		end
+		before {visit about_path}
+		it {should have_content('About')}
+		it {should have_title('About - Help With Friends')}
+	end
 
-		it "should have the title" 'About' do
-			visit '/pages/about'
-			expect(page).to have_title("About - Help With Friends")
-	    end
+	describe "Contact Page" do
+		before {visit contact_path}
+		it {should have_content('Contact')}
+		it {should have_title('Contact - Help With Friends')}
 	end
 end
