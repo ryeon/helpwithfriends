@@ -1,5 +1,6 @@
 Helpwithfriends::Application.routes.draw do
-  get "users/new"
+  resources :microposts
+  resources :users
 
   root 'pages#home'
   match '/signup',  to: 'users#new',     via: 'get'
@@ -7,9 +8,7 @@ Helpwithfriends::Application.routes.draw do
   match '/about',   to: 'pages#about',   via: 'get'
   match '/contact', to: 'pages#contact', via: 'get'
   
-  resources :microposts
 
-  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
