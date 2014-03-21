@@ -1,7 +1,7 @@
 Helpwithfriends::Application.routes.draw do
-  resources :microposts
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :microposts, only: [:create, :destroy]
+  resources :sessions,   only: [:new, :create, :destroy]
 
   root 'pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
